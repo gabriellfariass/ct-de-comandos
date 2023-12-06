@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>Pagina de Coamandos</title>
+
+  <link rel="stylesheet" type="text/css" href="https://ct-de-comandos.gabrielfarias23.repl.co/css">
+
+  <script>
+    
+      function enviar() 
+      {
+
+          const DADOS = {
+              CONTEUDO: document.getElementById("CONTEUDO").value,
+              MAQUINA: document.getElementById("MAQUINA").value,
+          }
+
+          fetch('https://ct-de-comandos.gabrielfarias23.repl.co/enviar_comando', {
+                  method: 'POST',
+                  body: JSON.stringify(DADOS),
+                  headers: {
+                      'Content-Type': 'application/json'
+                  }
+              })
+              .then(response => response.text())
+              .then(response => {
+                
+                alert('Comando enviado com sucesso!');
+               window.location.href = 'https://ct-de-comandos.gabrielfarias23.repl.co/escolha';
+
+              });
+      }
+    
+  </script>
+  
+</head>
+<body>
+
+  <header class="caixa">
+    <p>Central de Comandos</p>
+  </header>
+
+  <main>
+    
+     <p class="titulo">Registre o comando, serviço executado e maquina...</p>
+
+    <textarea placeholder="Serviço Executado..." class="textbox" id="CONTEUDO"></textarea>
+
+    <textarea placeholder="Maquina..." class="textbox" id="MAQUINA"></textarea>
+
+    <button onclick="enviar()" id="enviarButton">Enviar</button>
+
+    </main>
+
+  <footer class="caixa">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-nlYVFWmWfsZGeXFWR-qPh5tt7GS5siCM53W61E43HC9m1bKxyBNk0hubqS9fW4ZE_w&usqp=CAU">
+  </footer>
+
+  
+
+</body>
+
+</html>

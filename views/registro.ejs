@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>Página de Registro</title>
+    <link rel="stylesheet" type="text/css" href="https://ct-avaliacoes.gabrielfarias23.repl.co/css">
+
+    <script>
+      
+        function Enviar() {
+
+            var dados = 
+            {
+                Nome: document.getElementById("Nome").value,
+                Data: document.getElementById("Data").value
+            };
+
+          console.log(dados);
+
+          const options = {
+            method: "POST",
+            headers: {'Content-Type': 'application/json',},
+            body: JSON.stringify(dados)
+          };
+
+          fetch( "https://ct-de-comandos.gabrielfarias23.repl.co/validacao", options )
+            .then(response => response.json())
+            .then(response => {
+              
+              console.log(response);
+               window.location.href = "https://ct-de-comandos.gabrielfarias23.repl.co/escolha";
+              
+            });
+
+        }
+    </script>
+  
+</head>
+
+
+  
+<body>
+  
+<header class="caixa">
+<p>Central de Comandos</p>
+</header>
+ 
+  
+  <main id="center">
+    
+      <div>
+            <p>Olá, identifique-se por gentileza:</p>
+      </div>
+
+    <div>
+            <input id="Nome" type="text" placeholder="Digite seu Nome Completo..." >
+            <input id="Data" type="date" placeholder="Digite a Data no qual o serviço foi prestado..." >
+            <button onclick="Enviar()">Prosseguir</button>
+    </div>
+    
+  </main>
+
+  
+  <footer class="caixa">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-nlYVFWmWfsZGeXFWR-qPh5tt7GS5siCM53W61E43HC9m1bKxyBNk0hubqS9fW4ZE_w&usqp=CAU">
+  </footer>
+  
+</body>
+</html>

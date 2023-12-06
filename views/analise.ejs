@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analise de Comandos</title>
+  <style>
+    
+    body 
+    {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: white;
+    }
+
+
+    #head 
+    {
+        height: 20%;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+
+      #logo-container 
+    {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      #logo-container img {
+          height: 5%;
+          width: 30%;
+      }
+
+      #feed {
+          display: flex;
+          justify-content: center;
+
+      }
+
+      table
+    {
+          border-collapse: collapse;
+          width: 80%;
+          margin-top: 20px;
+      }
+
+      th, td 
+    {
+          border: 1px solid #333;
+          padding: 8px;
+          text-align: left;
+      }
+
+      th 
+    {
+          background-color: #f2f2f2;
+      }
+
+      tr:nth-child(odd) 
+    {
+          background-color: #f9f9f9;
+      }
+
+      tr:nth-child(even) 
+    {
+          background-color: #ffffff;
+      }
+
+      tr:hover 
+    {
+          background-color: #d3d3d3;
+      }
+
+      /* Responsive Styles */
+      @media only screen and (max-width: 600px) {
+          #head
+        {
+              height: 30%;
+          }
+
+          #logo-container img 
+        {
+              height: 10%;
+              width: 60%;
+          }
+
+          table 
+        {
+              width: 100%;
+          }
+
+          th, td 
+        {
+              font-size: 14px;
+          }
+      }
+  </style>
+</head>
+<body onload="tabela()">
+    <div id="head">
+        <div id="logo-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-nlYVFWmWfsZGeXFWR-qPh5tt7GS5siCM53W61E43HC9m1bKxyBNk0hubqS9fW4ZE_w&usqp=CAU">
+        </div> 
+        <div>
+            <p>Central de Comandos</p>
+        </div>
+    </div>
+
+    <div id="feed">
+        <div id="results" style="display: flex;
+          justify-content: center;">
+            <table id="tabela-dados">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Data</th>
+                        <th>Maquina</th>
+                      <th>Comandos</th>
+                    </tr>
+                </thead>
+                <tbody id="conteudo-tabela">
+                    <!-- Os dados serão renderizados automaticamente aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function tabela() {
+            const options = {
+                method: "GET",
+                headers: { "Content-Type": "application/JSON" }
+            };
+
+            fetch('https://ct-de-comandos.gabrielfarias23.repl.co/check')
+                .then(response => response.json())
+                .then(data => {
+                    const tabela = document.getElementById('conteudo-tabela');
+                    data.forEach(item => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${item.ID}</td>
+                            <td>${item.NOME}</td>
+                            <td>${item.DATA}</td>
+                            <td>${item.MAQUINA}</td>
+                            <td>${item.CONTEUDO}</td>
+                        `;
+                        tabela.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Erro ao obter os dados:', error));
+        }
+    </script>
+</body>
+</html>

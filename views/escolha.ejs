@@ -1,0 +1,54 @@
+        <!DOCTYPE html>
+        <html lang="pt">
+
+        <head>
+          <meta charset="UTF-8">
+          <title>Pagina de Escolhas</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+          <link rel="stylesheet" type="text/css" href="https://ct-de-comandos.gabrielfarias23.repl.co/css">
+
+          <script>
+            function redirecionaranalise() {
+              window.location.href = 'https://ct-de-comandos.gabrielfarias23.repl.co/analise';
+            }
+
+            function redirecionarcomando() {
+              window.location.href = 'https://ct-de-comandos.gabrielfarias23.repl.co/comando';
+            }
+          </script>
+          
+        </head>
+        <body>
+
+          
+          <header class="caixa">
+            <p>Central de Comandos</p>
+          </header>
+
+          
+          
+          <main id="center">
+
+            <div>
+              <p> Olá, <%=Nome%> </p>
+              <p> Seja bem-vindo!</p>
+            </div>
+
+            <div>
+              <p> Escolha uma opção: </p>
+              <br>
+              <button class= "box2" onclick="redirecionarcomando()">Digitar demanda ou serviço realizado:</button>
+              <br>
+              <button class= "box2" onclick="redirecionaranalise()">Consultar comandos/demandas</button>
+
+            </main>
+
+          
+            <footer class="caixa">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-nlYVFWmWfsZGeXFWR-qPh5tt7GS5siCM53W61E43HC9m1bKxyBNk0hubqS9fW4ZE_w&usqp=CAU">
+            </footer>
+
+          
+          </body>
+          </html>
